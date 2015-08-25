@@ -133,6 +133,15 @@ export default Ember.Mixin.create({
       case 'date':
         dates = [value];
         break;
+      case 'string':
+        // try to convert strings to dates
+        // if it's an ISO formatted date it'll work, otherwise set to null
+        try {
+          dates = [new Date(value)];
+        } catch (e) {
+          dates = [null];
+        }
+        break;
       default:
         dates = [null];
     }
