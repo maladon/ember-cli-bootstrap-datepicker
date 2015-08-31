@@ -42,6 +42,14 @@ test('displays date with custom format when format is set', function(assert) {
   assert.equal(this.$().val(), '31.Dec.14');
 });
 
+test('allow input of ISO date strings', function(assert) {
+  this.subject({
+    value: '2014-12-31T06:00:00Z'
+  });
+
+  assert.equal(this.$().val(), '12/31/2014');
+});
+
 test('resets date when input is cleared', function(assert) {
   this.subject({
     value: new Date(2014, 11, 31)
